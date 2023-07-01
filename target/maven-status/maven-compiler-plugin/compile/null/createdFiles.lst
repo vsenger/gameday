@@ -1,0 +1,4 @@
+org/acme/GreetingResource.class
+org/gameday/model/Team.class
+org/gameday/service/TeamService.class
+org/gameday/service/AbstractTeamService.class

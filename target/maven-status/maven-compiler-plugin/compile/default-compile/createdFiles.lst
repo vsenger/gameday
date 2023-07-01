@@ -1,0 +1,4 @@
+org/gameday/model/Quiz.class
+org/gameday/service/QuizService.class
+org/gameday/resource/QuizResource.class
+org/gameday/resource/TeamResource.class
