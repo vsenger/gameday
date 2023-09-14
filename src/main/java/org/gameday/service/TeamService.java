@@ -29,23 +29,26 @@ public class TeamService {
                 .collect(Collectors.toList());
         return teams;
     }
-    public List<Team> findByDescription(String description) {
-        List<Team> teams = dynamoDB.scanPaginator(scanRequest()).items().stream()
-                .map(Team::from)
-                .filter(team -> team.getDescription().equals(description))
-                .collect(Collectors.toList());
-        return teams;
-    }
-
     public Team findByID(String ID) {
         return  Team.from(dynamoDB.getItem(getRequest(ID)).item());
     }
+    //create a method find by description
+    public List<Team> findByDescription(String description) {
+        List<Team> teams = dynamoDB.scanPaginator(scanRequest()).items().stream()
+                .map(Team::from)
+                .collect(Collectors.toList());
+        return teams;
+    }
+    public List<Team> findByPassword()
 
     public void addEntry(Team team) {
         dynamoDB.putItem(putRequest(team));
     }
     public static final String TEAM_ID_COL = "teamID";
     public static final String ENTRY_DESCRIPTION_COL = "description";
+    //add a password String COL
+
+    public static final String PASSWORD_COL = "password";
 
     public String getTableName() {
         return "gameday_teams";
@@ -53,7 +56,7 @@ public class TeamService {
 
     protected ScanRequest scanRequest() {
         return ScanRequest.builder().tableName(getTableName())
-                .attributesToGet(TEAM_ID_COL, ENTRY_DESCRIPTION_COL).build();
+                .attributesToGet(TEAM_ID_COL, ENTRY_DESCRIPTION_COL, PASSWORD_COL).build();
     }
 
     protected PutItemRequest putRequest(Team team) {

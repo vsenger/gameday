@@ -8,9 +8,20 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 @RegisterForReflection
 public class Team {
+    //add a new field password with getter and setter
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String password;
+
+
 
     public String teamID;
     public String description;
+
 
     public Team() {}
 
@@ -19,6 +30,7 @@ public class Team {
         if (item != null && !item.isEmpty()) {
             team.setTeamID(item.get("teamID").s());
             team.setDescription(item.get("description").s());
+
         }
         return team;
     }

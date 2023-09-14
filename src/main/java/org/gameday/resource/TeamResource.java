@@ -23,6 +23,9 @@ public class TeamResource {
         return service.findAll();
     }
 
+
+
+
     @GET
     @Path("/find/{teamID}")
     public Team findByID(String ID) {
@@ -32,7 +35,9 @@ public class TeamResource {
     @GET
     @Path("/findByDescription/{description}")
     public List<Team> findByDescription(String description) {
+
         return service.findByDescription(description);
+
     }
 
     @POST
